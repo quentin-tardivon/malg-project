@@ -86,22 +86,20 @@ Termination == <>(pc = "Done")
 
 
 
-Q1 == (pc="Lbl_2" /\ i <= n) => c <= i + 1
+Q1 == (pc="p4" /\ i <= n) => c <= i + 1
 
-Q2 == pc = "Lbl_2" \/ pc = "Lbl_3" => n = n0
+Q2 == pc # "p1" => n = n0
 
-Q3 == (pc = "Lbl_2" /\ i <= n) => pc' = "Lbl_3"
+Q3 == (pc = "p2" /\ i <= n) => pc' = "p3"
 
-Q4 == pc = "Done" => pc="Done"
+Q4 == pc = "Done" => a = (((n*(n+1))\div2)+1)
 
-Q5 == pc = "Done" => a = (((n*(n+1))\div2)+1)
-
-correction == a \in min..max \* Condition de sureté
+Q5 == a \in min..max \* Condition de sureté
 
 
 
 
 =============================================================================
 \* Modification History
-\* Last modified Wed May 03 11:54:11 CEST 2017 by quentin
+\* Last modified Thu May 04 10:03:21 CEST 2017 by quentin
 \* Created Fri Apr 14 15:08:52 CEST 2017 by quentin
