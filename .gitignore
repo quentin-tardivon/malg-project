@@ -36,3 +36,6 @@
 *.toolbox
 *.cfg
 *.old
+
+
+**/*.frama-c/**
