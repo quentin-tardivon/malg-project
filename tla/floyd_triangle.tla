@@ -11,7 +11,7 @@ variables n,i,c,a = 1;
          p4: while ( c <= i) {
             p5: print a;
             p6: c := c + 1;
-            p7: a := a + 1;  
+            p7: a := a + 1;
         };
         p8: i:=i+1;
      };
@@ -92,14 +92,21 @@ Q2 == pc # "p1" => n = n0
 
 Q3 == (pc = "p2" /\ i <= n) => pc' = "p3"
 
-Q4 == pc = "Done" => a = (((n*(n+1))\div2)+1)
+Res == pc = "Done" => a = (((n*(n+1))\div2)+1)
 
-Q5 == a \in min..max \* Condition de sureté
+Overflow == a \in min..max /\ n \in min..max /\ i \in min..max /\ c \in min..max \* Condition de sureté
+
+Prec1 == pc = "p2" => n = n0
+
+Prec2 == pc = "p3" => i <= n /\ n=n0
+
+Prec3 == pc = "p5" => c <= i
+
 
 
 
 
 =============================================================================
 \* Modification History
-\* Last modified Thu May 04 10:03:21 CEST 2017 by quentin
+\* Last modified Fri May 05 14:42:46 CEST 2017 by quentin
 \* Created Fri Apr 14 15:08:52 CEST 2017 by quentin
