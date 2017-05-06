@@ -1,0 +1,97 @@
+\documentclass[a4paper,11pt, oneside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{etoolbox}
+\usepackage{color}
+\usepackage[explicit,pagestyles]{titlesec}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{fancyhdr}
+\usepackage{fontspec}
+\usepackage{eurosym}
+\usepackage{titlesec}
+\usepackage[]{algorithm2e}
+
+
+% ====== CONFIG ========
+
+%\setmainfont{Roboto Light}
+
+%\setmainfont{Roboto Light}
+%\setsansfont{Roboto}
+%\setmonofont{Roboto}
+%\newfontfamily\light{Roboto Slab Light}
+\graphicspath{{img/}}
+\setlength{\unitlength}{1mm}
+\makeatletter
+
+\definecolor{primary}{RGB}{44, 62, 80}
+
+
+\titleformat{\chapter}[display]{\huge}{\thechapter \quad #1}{0pt}{}
+\titlespacing{\chapter}{0pt}{0pt}{0pt}
+
+\titleformat{\section}[display]{\LARGE}{}{0pt}{\thesection \quad #1}
+
+
+\setlength{\TPHorizModule}{1mm}
+\setlength{\TPVertModule}{1mm}
+\def\sizeMedia{38}
+\def\size{3.8cm}
+\def\sizeMargin{0.2cm}
+\def\margin{2}
+\def\fixMargin{0}
+
+\pagestyle{plain}
+
+\author{Yann Prono, Quentin Tardivon}
+\date{\today}
+
+\def\school{TELECOM Nancy}
+\def\schoolAddress{193 Avenue Paul Muller}
+\def\schoolPostalCode{54602}
+\def\schoolCity{Villers-lès-Nancy}
+\def\schoolCodeAndCity{\schoolPostalCode, \schoolCity}
+\def\schoolYear{2016 - 2017}
+
+\def\appName{MyAdblock}
+\def\widthImage{1}
+\def\todo{{\color{red}\Huge{TODO}}}
+
+\def\schoolYear{2016 - 2017}
+
+% ====== END CONFIG ========
+
+
+\begin{document}
+
+	\begin{titlepage}
+		\input{cover}
+	\end{titlepage}
+
+	\newpage\newpage\null\thispagestyle{empty}
+	\newpage
+		\tableofcontents
+		\thispagestyle{empty}
+
+	\chapter{Introduction}
+	\setcounter{page}{1}
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+
+	\chapter{Analyse}
+
+		\section{Analyse du site telecomnancy.univ-lorraine.fr}
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+	\chapter{Conclusion}
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\end{document}
