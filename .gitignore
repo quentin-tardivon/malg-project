@@ -34,8 +34,6 @@ tmp/
 *.su
 
 #TLA+ files
-*.toolbox
-*.cfg
 *.old
 
 

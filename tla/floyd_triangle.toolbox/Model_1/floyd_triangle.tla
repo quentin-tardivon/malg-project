@@ -3,7 +3,7 @@ EXTENDS TLC, Naturals
 CONSTANTS n0, min, max
 (*
 --algorithm  floyd_triangle {
-variables n,i,c,a = 1;
+variables n,i,c,a = 1; 
 {
      p1: n:= n0;
      p2: while(i <= n) {
