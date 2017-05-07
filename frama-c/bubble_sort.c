@@ -33,6 +33,7 @@ int main() {
         //@ assert array[d + 1] == swap;
         //@ assert array[d] < array[d + 1];
       }
+      //@ assert array[d] <= array[ d+ 1];
     }
     //@ assert d == n - c - 1;
   }
@@ -40,7 +41,7 @@ int main() {
 
 
   printf("Sorted list in ascending order:\n");
-
+  /*@ loop invariant \forall integer k; 1 <= k < n ==> array[k] > array[k - 1]; */
   for (c = 0; c < n; c++) {
     printf("%d\n", array[c]);
   }

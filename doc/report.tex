@@ -14,7 +14,7 @@
 \usepackage[explicit,pagestyles]{titlesec}
 \usepackage[absolute,overlay]{textpos}
 \usepackage{fancyhdr}
-
+\usepackage[export]{adjustbox}
 \usepackage{eurosym}
 \usepackage{titlesec}
 \usepackage[]{algorithm2e}
@@ -83,7 +83,17 @@
 
 	\chapter{Introduction}
 	\setcounter{page}{1}
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+		L'objectif de ce projet est d'analyser des programmes écrits en C et de déterminer pour chacun d'entre eux des
+		propriétés validées. Pour cela, on vérifiera l'absence d'erreurs à l'exécution du programme et on montrera la correction partielle des programmes.
+		On dispose de la plateforme Toolbox TLA ainsi que de l'outil Frama-C.\\
+
+		\noindent Nous ferons l'analyse des trois programmes C suivants:
+		\begin{itemize}
+			\item Bubble sort
+			\item Floyd triangle
+			\item Last algorithm
+		\end{itemize}
 
 	\chapter{Triangle de Floyd}
 
@@ -116,6 +126,21 @@
 			Cette formule correspond à la somme suivante: $$\sum_{k=1}^{n}k$$
 
 		\section{Implémentation et preuves Frama-C}
+		Les annotations ajoutées dans le programme vont permettre de
+		vérifier le bon comportement attendu par la fonction main (préconditions et postconditions) mais
+		aussi de prouver les assertions tout au long de l'algorithmne.\\
+
+		\noindent Il est attendu que la fonction \textit{main()} renvoie 0. Ensuite,
+		on s'assure que l'entier n donnée par l'utilisateur est un entier n'est pas en overflow ni en underflow.
+		Or ici, la variable n représente le nombre de lignes. Si on s'en réfère à la
+		formule précédente, on obtiendrais comme valeur finale:
+		$$[65535 \times (65535 + 1) / 2] + 1 = 2147450881$$
+
+		\noindent On obtiendrait alors une valeur d'overflow dans ce cas. Afin d'assurer le bon
+		fonctionnement de ce programme, il est nécéssaire d'ajouter des bornes sur la valeur n lors
+		du \textit{scanf()} afin d'éviter l'overflow de telle manière que:
+		$$[n \times (n + 1) / 2] + 1 	\leq 65535$$
+		\noindent D'autres vérifications sont effectuées sur les boucles afin de prouver la terminaison de ces dernières.
 
 	\chapter{Tri à bulles}
 
@@ -149,6 +174,16 @@
 
 
 		\section{Implémentation et preuves Frama-C}
+
+		De la même manière que le programme du triangle de Floyd, une vérification
+		est faite afin d'éviter l'overflow ou l'underflow sur les entiers
+		donnés par l'utilisateur. Des annotations sont également ajoutées
+		afin de vérifier la terminaison des deux boucles principales du programme.
+
+		\noindent La principale preuve ici est au niveau du \textit{swap}. On s'assure
+		qu'en cas de swap, le swap s'effectue et est correcte.
+		À la fin du programme, on vérifie que le tableau est correctement trié.
+
 
 	\chapter{Algorithme P1}
 
