@@ -109,17 +109,17 @@
 			un maximum d'étape de l'algorithme pour pouvoir y référer plus facilement
 			et pour prouver un maximum de préconditions et d'invariants.
 
-			On a d'abord vérifier les invariants de boucles. En effet, le fait d'être
-			dans la boucle p2 (c'est à dire que le programme est au point p5) implique
+			On a d'abord vérifié les invariants de boucles. En effet, le fait d'être
+			dans la boucle p2 (c'est-à-dire que le programme est au point p5) implique
 			que i est plus petit que n. De la même façon, en p4 c est plus petit ou égal
 			à n.
 
-			On s'est ensuite assurer qu'il n'y avait pas d'overflow ou d'underflow au sein
+			On s'est ensuite assuré qu'il n'y avait pas d'overflow ou d'underflow au sein
 			du programme. On a pour cela défini le max à 65535 correspondant à l'entier
-			maximum réprésentable dans un système 16bits non signé.
+			maximum représentable dans un système 16bits non signé.
 
 			Enfin, la correction partielle du programme est assurée par la propriété
-			Correctness. Lorsqu'on arrive en pc="Done", c'est à dire à la fin du programme
+			Correctness. Lorsqu'on arrive en pc="Done", c'est-à-dire à la fin du programme
 			on s'assure que le dernier entier imprimé correspond à la formule suivante:
 			$a = [n \times (n + 1) / 2] + 1$
 
@@ -128,16 +128,16 @@
 		\section{Implémentation et preuves Frama-C}
 		Les annotations ajoutées dans le programme vont permettre de
 		vérifier le bon comportement attendu par la fonction main (préconditions et postconditions) mais
-		aussi de prouver les assertions tout au long de l'algorithmne.\\
+		aussi de prouver les assertions tout au long de l'algorithme.\\
 
 		\noindent Il est attendu que la fonction \textit{main()} renvoie 0. Ensuite,
-		on s'assure que l'entier n donnée par l'utilisateur est un entier n'est pas en overflow ni en underflow.
+		on s'assure que l'entier n donné par l'utilisateur est un entier n'est pas en overflow ni en underflow.
 		Or ici, la variable n représente le nombre de lignes. Si on s'en réfère à la
-		formule précédente, on obtiendrais comme valeur finale:
+		formule précédente, on obtiendrait comme valeur finale:
 		$$[65535 \times (65535 + 1) / 2] + 1 = 2147450881$$
 
 		\noindent On obtiendrait alors une valeur d'overflow dans ce cas. Afin d'assurer le bon
-		fonctionnement de ce programme, il est nécéssaire d'ajouter des bornes sur la valeur n lors
+		fonctionnement de ce programme, il est nécessaire d'ajouter des bornes sur la valeur n lors
 		du \textit{scanf()} afin d'éviter l'overflow de telle manière que:
 		$$[n \times (n + 1) / 2] + 1 	\leq 65535$$
 		\noindent D'autres vérifications sont effectuées sur les boucles afin de prouver la terminaison de ces dernières.
@@ -148,28 +148,28 @@
 
 		Le tri bulle consiste à comparer répétitivement les éléments consécutifs d'un tableau,
 		et à les permuter lorsqu'ils sont mal triés. Ici, il prend en paramètre un
-		tableau d'entier à trier et le nombre d'élément de ce tableau.
+		tableau d'entiers à trier et le nombre d'éléments de ce tableau.
 
 
 		\section{Implémentation et preuves PlusCal - TLA+}
 
 		De la même façon que le Triangle de Floyd l'implémentation en PlusCal est
-		relativement rapide. La seule difficultée est la declaration de tableau.
+		relativement rapide. La seule difficulté est la déclaration de tableau.
 
 		Ici on a fait la preuve de l'algorithme sur un tableau fixe de 4 éléments.
 
 		De la même façon que le programme précédent on a d'abord vérifier les invariants
 		de boucles dans les invariants Prec1 et Prec2.
 
-		On a ensuite vérifier qu'après une opération de swap, les deux éléments
-		du tableau étaient localement ordonnés dans la propriété Prec3. On également
+		On a ensuite vérifié qu'après une opération de swap, les deux éléments
+		du tableau étaient localement ordonnés dans la propriété Prec3. On peut également
 		vérifier l'absence d'overflow et d'underflow de la même façon que pour le programme
 		précédent.
 
 		Enfin, on a vérifié la correction de l'algorithme en s'assurant que le tableau
 		résultat était globalement trié. Pour cela on a déclaré une fonction isSorted vérifiant
 		que pour tout élément du tableau on tableau[k] <= tableau[k+1].
-		On a ensuite appliqué cette fonction à la fin de l'algorithme, c'est à dire
+		On a ensuite appliqué cette fonction à la fin de l'algorithme, c'est-à-dire
 		lorsque pc = "Done".
 
 
@@ -189,8 +189,8 @@
 
 		\section{Description de l'algorithme}
 
-		L'algorihme P1 était un algorithme inconnu. On s'est rendu compte lors de la
-		preuve de ce dernier qu'il calcule les termes de la suite recursive de 2nd
+		L'algorithme P1 était un algorithme inconnu. On s'est rendu compte lors de la
+		preuve de ce dernier qu'il calcule les termes de la suite récursive de 2nd
 		ordre suivante: $b_n = 2 \times b_{n-1} + 2 \times b_{n-2}$ avec $b_0 = 1$ et $b_1 = 1$.
 
 		\section{Implémentation et preuves PlusCal - TLA+}
@@ -200,12 +200,12 @@
 
 		Toujours comme les algorithmes précédents, on a vérifié les conditions de la boucle
 		p9 ainsi que les conditions des tests p5 et p7 respectivement dans les propriétés
-		Prec5, Prec1 et Prec3. On a également vérifier le non respect de ces conditions
+		Prec5, Prec1 et Prec3. On a également vérifié le non respect de ces conditions
 		dans les blocs else de ces différentes conditions dans Prec2 et Prec4. On a
 		également la correction partielle pour v = 0 et v = 1 dans la propriété Res,
 		ce qui correspond aux termes $b_0$ et $b_1$ de la suite. On pouvait vérifier
-		que les éléments de la suite était bien des entiers naturels dans la propriété
-		PartialCorrectness. On a également, comme pour les algoritmes précédents vérifier
+		que les éléments de la suite étaient bien des entiers naturels dans la propriété
+		PartialCorrectness. On a également, comme pour les algorithmes précédents vérifié
 		l'absence d'overflow et d'underflow.
 
 		En revanche, la correction totale de l'algorithme pose problème. En effet,
