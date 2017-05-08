@@ -10,8 +10,10 @@
       ensures \result == 1;
     behavior x_eq_other:
       assumes x != 0 && x != 1;
-      ensures 1 == 1;
+      ensures \result == \result;
 */
+//ensures \result == 0.5 * (\pow(1 + \sqrt(3), x) + \pow(1 - \sqrt(3), x));
+
 int p1(int x) {
   int a,b,c,i,r,fin;
   a = 1;
@@ -41,6 +43,7 @@ int p1(int x) {
         //@ assert b == a;
         b = 2*c+2*b;
       }
+      // assert i == x + 1;
     }
     r = b;
     //@ assert r == b;
